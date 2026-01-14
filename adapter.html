@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自适应适配器 - 重庆宁庆机械有限公司</title>
+    <style>
+        :root {
+            --primary-color: #0056b3; /* 工业蓝 */
+            --secondary-color: #333;
+            --bg-light: #f4f4f4;
+            --border-color: #ddd;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background-color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #004494;
+        }
+
+        /* 产品详情部分 */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 50px 0 30px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: start;
+        }
+
+        .product-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .product-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .full-width-img {
+            grid-column: span 2;
+        }
+
+        .specs-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .specs-table th, .specs-table td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .specs-table th {
+            color: var(--primary-color);
+            width: 30%;
+        }
+
+        /* 型号列表 */
+        .models-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .models-list li {
+            background: white;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tag {
+            background: #e3f2fd;
+            color: var(--primary-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* 资质证书 */
+        .cert-section {
+            background-color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .cert-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cert-img {
+            max-width: 300px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 底部 */
+        footer {
+            background-color: #333;
+            color: #ccc;
+            padding: 40px 0 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="company-name">重庆宁庆机械有限公司</div>
+            <div>ISO9001:2015 认证企业</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>自适应适配器 (AT389)</h1>
+            <p>专业级通用型航空接头拆卸与紧固工具，高强度 45# 钢制造，精准耐用。</p>
+            <a href="#specs" class="btn">查看详细规格</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <h2 class="section-title">产品详情</h2>
+        
+        <div class="product-grid" id="specs">
+            <div class="product-images">
+                <img src="placeholder-product1.jpg" alt="自适应适配器 侧视图" class="full-width-img">
+                <img src="placeholder-product2.jpg" alt="自适应适配器 顶视图">
+                <img src="placeholder-product3.jpg" alt="自适应适配器 结构图">
+                <div style="grid-column: span 2; text-align: center; color: #888; font-size: 0.8rem; margin-top:5px;">
+                    (注：请替换为实际产品图片)
+                </div>
+            </div>
+
+            <div class="specs-card">
+                <h3>技术规格</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>基础型号</th>
+                        <td>AT389</td>
+                    </tr>
+                    <tr>
+                        <th>工具材质</th>
+                        <td>45# 钢 (高强度结构钢)</td>
+                    </tr>
+                    <tr>
+                        <th>尺寸参数</th>
+                        <td>直径 Φ55mm / 高度 46mm</td>
+                    </tr>
+                    <tr>
+                        <th>功能用途</th>
+                        <td>通用型航空接头拆卸，紧固</td>
+                    </tr>
+                    <tr>
+                        <th>专利状态</th>
+                        <td>审批中</td>
+                    </tr>
+                </table>
+
+                <h3 style="margin-top: 30px;">型号分类</h3>
+                <ul class="models-list">
+                    <li>
+                        <span>AT389-T</span>
+                        <span class="tag">外键型</span>
+                    </li>
+                    <li>
+                        <span>AT389-S</span>
+                        <span class="tag">内槽型</span>
+                    </li>
+                    <li>
+                        <span>AT389-P</span>
+                        <span class="tag">内键型</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cert-section">
+            <h2 class="section-title">企业资质</h2>
+            <div class="cert-container">
+                <p>我们严格遵循 ISO9001:2015 质量管理体系标准，确保持续提供高质量的机械加工产品。</p>
+                <img src="placeholder-certificate.jpg" alt="ISO9001 质量管理体系认证证书" class="cert-img">
+                <p style="font-size: 0.9rem; color: #666;">
+                    <strong>证书编号：</strong>29323Q42643R1S<br>
+                    <strong>认证范围：</strong>金属零件的一般机械加工
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>重庆宁庆机械有限公司</strong></p>
+            <p>地址：重庆市沙坪坝区青木关镇管家桥村彭家院社</p>
+            <p>&copy; 2026 重庆宁庆机械有限公司 版权所有</p>
+        </div>
+    </footer>
+
+</body>
+</html>
